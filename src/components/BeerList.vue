@@ -8,8 +8,8 @@
       </div>
     </b-row>
     <b-row>
-      <template v-for="beer in filteredList(items, filterBeer)" :key="beer.id">
-        <b-col md="6" sm="12">
+      <template v-for="beer in filteredList(items, filterBeer)">
+        <b-col :key="beer.id" md="6" sm="12">
           <b-card no-body class="CardList__Card">
             <b-card-img
               :src="beer.image_url"

@@ -1,7 +1,11 @@
-import { createStore } from "vuex";
-import axios from "axios";
+import Vue from 'vue'
+import Vuex from 'vuex'
+import axios from 'axios'
 
-export default createStore({
+Vue.use(Vuex)
+Vue.use(axios)
+
+export default new Vuex.Store({
   state: {
     items: []
   },
@@ -24,5 +28,6 @@ export default createStore({
         })
     }
   },
-  modules: {},
-});
+  modules: {
+  }
+})
