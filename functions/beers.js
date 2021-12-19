@@ -2,17 +2,22 @@ const axios = require("axios")
 
 const API_ENDPOINT = 'https://api.punkapi.com/v2/beers';
 
-exports.handler = async (event, context) => {
+exports.handler = async (event) => {
+let response
   try {
-    const response = await axios.get(API_ENDPOINT);
-    console.log(response)
-    return response
+    response = await axios.get(API_ENDPOINT).then(res => res.data)
   } catch (error) {
     console.log(error);
     return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Failed fetching data' }),
+        statusCode: err.statusCode || 500,
+            body: JSON.stringify({
+              error: err.message
+            })
     };
+  }
+  return {
+      statusCode: 200,
+      body: JSON.stringify(response)
   }
 };
           
